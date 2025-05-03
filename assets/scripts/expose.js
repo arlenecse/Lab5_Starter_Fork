@@ -4,6 +4,9 @@ window.addEventListener('DOMContentLoaded', init);
 
 
 function init() {
+
+  const jsConfetti=new JSConfetti();
+
   const selectElement=document.getElementById("horn-select");
   console.log(selectElement);
   const image=document.querySelector("img");
@@ -49,8 +52,16 @@ function init() {
 
 
   playButton.addEventListener("click", (event) =>{
-    console.log(sound.src);
-    sound.play();
+    onclick=(event) =>{
+      if(selectElement.value=="party-horn"){
+        jsConfetti.addConfetti();
+        console.log("confetti")
+      }
+      sound.play();
+    }
+   
+    // console.log(sound.src);
+    // sound.play();
   })
 
   
