@@ -26,20 +26,27 @@ function init() {
   slider.addEventListener("change",(e)=>{
     if(slider.value==0){
       volImage.src=`assets/icons/volume-level-0.svg`;
+      sound.volume=0;
     }
 
     if(slider.value>=1 && slider.value<33){
       volImage.src=`assets/icons/volume-level-1.svg`;
+      sound.volume=slider.value/100;
     }
 
     if(slider.value>=33 && slider.value<67){
       volImage.src=`assets/icons/volume-level-2.svg`;
+      sound.volume=slider.value/100;
     }
 
     if(slider.value>=67){
       volImage.src=`assets/icons/volume-level-3.svg`;
+      sound.volume=slider.value/100;
     }
+
+    console.log(sound.volume);
   });
+
 
   playButton.addEventListener("click", (event) =>{
     console.log(sound.src);
