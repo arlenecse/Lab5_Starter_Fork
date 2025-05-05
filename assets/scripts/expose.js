@@ -21,12 +21,15 @@ function init() {
   const playButton=document.querySelector("button");
   console.log(playButton);
 
+
+  //making sound image change
   selectElement.addEventListener("change",(e)=>{
     image.src=`assets/images/${e.target.value}.svg`;
     sound.src=`assets/audio/${e.target.value}.mp3`;
   });
 
-  slider.addEventListener("change",(e)=>{
+  // making volume icon change
+  slider.addEventListener("input",(e)=>{
     if(slider.value==0){
       volImage.src=`assets/icons/volume-level-0.svg`;
       sound.volume=0;
@@ -50,7 +53,7 @@ function init() {
     console.log(sound.volume);
   });
 
-
+  // confetti and playing sound
   playButton.addEventListener("click", (event) =>{
     onclick=(event) =>{
       if(selectElement.value=="party-horn"){
@@ -60,8 +63,6 @@ function init() {
       sound.play();
     }
    
-    // console.log(sound.src);
-    // sound.play();
   })
 
   
