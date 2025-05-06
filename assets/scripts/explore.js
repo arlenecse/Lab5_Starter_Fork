@@ -28,8 +28,8 @@ function init() {
       const toSpeak = new SpeechSynthesisUtterance(textSpeak.value);
       //setting voice and language
       for(let i = 0; i < voices.length; i++){
-        //console.log(voices[i].name);
-        //console.log("elem name:",voiceElement.value);
+        // console.log(voices[i].name);
+        // console.log("elem name:",voiceElement.value);
         if(voices[i].name === voiceElement.value){
           toSpeak.voice = voices[i];
           toSpeak.lang=voices[i].lang;
@@ -39,12 +39,23 @@ function init() {
       }
       //speaking
       speechSynthesis.speak(toSpeak);
+      console.log("talking")
 
-      //changing image
-      if (speechSynthesis.speaking){
-        image.src = `assets/images`
-      }
+
+      
     }
   })
+
+  setTimeout(() =>{
+    if (speechSynthesis.speaking){
+      image.src = `assets/images/smiling-open.png`;
+    }
+
+    if (!speechSynthesis.speaking){
+      image.src = `assets/images/smiling.png`;
+    }
+  },1000);
+
+
 
 }
