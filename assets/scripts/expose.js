@@ -11,7 +11,7 @@ function init() {
   console.log(selectElement);
   const image=document.querySelector("img");
   console.log(image);
-  const sound=document.getElementsByClassName("hidden");
+  const sound=document.getElementsByClassName("hidden")[0];
   console.log(sound);
 
   const div=document.getElementById("volume-controls");
@@ -55,14 +55,12 @@ function init() {
 
   // confetti and playing sound
   playButton.addEventListener("click", (event) =>{
-    onclick=(event) =>{
+    console.log("getting triggered");
       if(selectElement.value=="party-horn"){
         jsConfetti.addConfetti();
         console.log("confetti")
       }
       sound.play();
-    }
-   
   })
 
   
