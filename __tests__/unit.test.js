@@ -19,7 +19,7 @@ test('validnumber2', () => {
 });
 
 test('invalidtype', () => {
-  expect(isPhoneNumber(619-457-9788)).toBe(true);
+  expect(isPhoneNumber(619-457-9788)).toBe(false);
 });
 
 test('invalidnumber', () => {
