@@ -1,15 +1,15 @@
 // explore.js
 
 window.addEventListener('DOMContentLoaded', init);
-
+const synth=window.speechSynthesis;
 function init() {
   // TODO
   const voiceElement=document.getElementById("voice-select");
   const textSpeak = document.getElementById("text-to-speak");
   const press = document.querySelector("button");
   const image = document.querySelector("img");
+  console.log(image);
   console.log(press);
-
   //populating options for voices
   speechSynthesis.onvoiceschanged = () => {
     const voices = speechSynthesis.getVoices();
@@ -20,42 +20,37 @@ function init() {
       voiceElement.appendChild(options);
     }
   }
-
   //playing text after clicking button
   press.addEventListener("click", (event) =>{
-    onclick = (event) => {
       const voices = speechSynthesis.getVoices();
       const toSpeak = new SpeechSynthesisUtterance(textSpeak.value);
       //setting voice and language
       for(let i = 0; i < voices.length; i++){
-        // console.log(voices[i].name);
-        // console.log("elem name:",voiceElement.value);
         if(voices[i].name === voiceElement.value){
           toSpeak.voice = voices[i];
           toSpeak.lang=voices[i].lang;
           break;
         }
-
       }
       //speaking
       speechSynthesis.speak(toSpeak);
-      console.log("talking")
-
-
       
-    }
+      toSpeak.onstart=() => {
+        changeImage(true);
+      };
+      toSpeak.onend=() => {
+        changeImage(false);
+      };
   })
-
-  setTimeout(() =>{
-    if (speechSynthesis.speaking){
-      image.src = `assets/images/smiling-open.png`;
-    }
-
-    if (!speechSynthesis.speaking){
-      image.src = `assets/images/smiling.png`;
-    }
-  },1000);
-
-
-
+}
+function changeImage(isSpeaking){
+  console.log("entering")
+  const image = document.querySelector("img");
+  if(isSpeaking){
+    console.log("speaking");
+    image.src = "assets/images/smiling-open.png"
+  }else{
+    console.log("stopped speaking");
+    image.src = "assets/images/smiling.png"
+  }
 }
