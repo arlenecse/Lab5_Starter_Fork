@@ -11,5 +11,6 @@ Partner Name: Kiara Singh
 
     Yes, because unit tests can quickly execuete many example inputs since it is just testing message length validation. We could have tests with less than 80, greater than 80, and equal to 80 characters to test all the bounds and check if the correct output is displayed.
 
-[Link](https://arlenecse.github.io/Lab5_Starter_Fork/expose.html) to expose.html
-[Link](https://arlenecse.github.io/Lab5_Starter_Fork/explore.html) to explore.html
+[Link](https://arlenecse.github.io/Lab5_Starter_Fork/expose.html) to pt. 1 expose.html
+
+[Link](https://arlenecse.github.io/Lab5_Starter_Fork/explore.html) to pt. 2 explore.html
