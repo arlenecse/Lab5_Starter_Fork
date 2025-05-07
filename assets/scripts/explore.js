@@ -2,6 +2,7 @@
 
 window.addEventListener('DOMContentLoaded', init);
 const synth=window.speechSynthesis;
+
 function init() {
   // TODO
   const voiceElement=document.getElementById("voice-select");
@@ -10,6 +11,7 @@ function init() {
   const image = document.querySelector("img");
   console.log(image);
   console.log(press);
+
   //populating options for voices
   speechSynthesis.onvoiceschanged = () => {
     const voices = speechSynthesis.getVoices();
@@ -20,37 +22,54 @@ function init() {
       voiceElement.appendChild(options);
     }
   }
+
+
   //playing text after clicking button
   press.addEventListener("click", (event) =>{
+
       const voices = speechSynthesis.getVoices();
       const toSpeak = new SpeechSynthesisUtterance(textSpeak.value);
       //setting voice and language
       for(let i = 0; i < voices.length; i++){
+        // console.log(voices[i].name);
+        // console.log("elem name:",voiceElement.value);
         if(voices[i].name === voiceElement.value){
           toSpeak.voice = voices[i];
           toSpeak.lang=voices[i].lang;
           break;
         }
+
       }
       //speaking
+
       speechSynthesis.speak(toSpeak);
-      
+      // changeImage();
+    
+            
       toSpeak.onstart=() => {
         changeImage(true);
       };
+
       toSpeak.onend=() => {
         changeImage(false);
+
       };
   })
 }
+
 function changeImage(isSpeaking){
   console.log("entering")
   const image = document.querySelector("img");
+
   if(isSpeaking){
     console.log("speaking");
-    image.src = "assets/images/smiling-open.png"
+    image.src = "assets/images/smiling-open.png" 
   }else{
     console.log("stopped speaking");
     image.src = "assets/images/smiling.png"
   }
 }
+
+
+ 
+
